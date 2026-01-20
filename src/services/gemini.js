@@ -1,7 +1,12 @@
 import { GoogleGenAI } from '@google/genai';
 
-// API Key - In production, use environment variables
-const API_KEY = 'AIzaSyCHXMz_haEzkqEGyzmZ2BpMSHT5aTKo4L8';
+// API Key from environment variable
+// Create a .env file with: VITE_GEMINI_API_KEY=your_key_here
+const API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
+
+if (!API_KEY) {
+    console.error('Missing VITE_GEMINI_API_KEY environment variable');
+}
 
 const genAI = new GoogleGenAI({ apiKey: API_KEY });
 
